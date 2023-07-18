@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link href="https://fonts.font.im/css?family=Luckiest+Guy|VT323" rel="stylesheet">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/load.css">
+    <!-- <link rel="stylesheet" href="https://test.byte.city/pass/pass.css"> -->
+    <!-- <script src="https://test.byte.city/pass/pass.js"></script> -->
+    <title>BRUCE LEE 50TH TRIBUTE</title>
+    <style>
+        input[type="text"]:focus::placeholder {
+          opacity: 0; /* 隐藏占位符 */
+        }
+    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-20KVDRHJ86"></script>
+    <script>
+      const gtagId = 'G-20KVDRHJ86';
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gtagId);
+    </script>
+    <script>
+      (function (w, d, psd_w) {
+        var resizeTime = null,
+            waitTime = 300;
+            var curWidth = document.documentElement.clientWidth
+        function changeRem() {
+            var clientWidth = document.documentElement.clientWidth;
+            var clientHeight = document.documentElement.clientHeight;
+            var width;
+            if(clientWidth / clientHeight > 16 / 9){
+                width = clientHeight * 16 / 9;
+            } else if(clientWidth < 1000 && clientWidth > 560) {
+                width = 1000;
+            } else {
+                width = clientWidth;
+            }
+        //    var width = clientWidth / clientHeight > 16 / 9 ? clientHeight * 16 / 9 : clientWidth;
+        //   var width = 800 < clientWidth < 1400 ? 1400 : clientWidth;
+          var height = d.documentElement.clientHeight;
+          var fontSize = width / psd_w * 100;
+          if (fontSize > 100) fontSize = 100;
+          d.documentElement.style.fontSize = fontSize + 'px';
+        }
+
+        w.addEventListener('onorientationchange' in w ? 'orientationchange' : 'resize', function () {
+          clearTimeout(resizeTime);
+          resizeTime = setTimeout(changeRem, waitTime);
+          window.location.reload();
+        }, false);
+        w.addEventListener('pageshow', function (win) {
+          win.persisted && (clearTimeout(resizeTime), resizeTime = setTimeout(changeRem, waitTime));
+        }, false);
+        d.addEventListener('DOMContentLoaded', changeRem, false);
+      }(window, document, 1920));
+    </script>
+    <script src="./js/lib/jquery.min.js"></script>
+    <script src="./js/lib/superagent.js"></script>
+    <script src="./js/lib/xmlhttprequest-length.min.js"></script>
+    <!-- <script src="./js/lib/web3auth.umd.min.js"></script>
+    <script src="./js/lib/ethers-5.2.umd.min.js"></script>
+    <script src="./js/lib/openloginAdapter.umd.min.js"></script>
+    <script src="./js/lib/metamaskAdapter.umd.min.js"></script>
+    <script src="./js/lib/torusEvmAdapter.umd.min.js"></script>
+    <script src="./js/lib/walletConnectV1Adapter.umd.min.js"></script>
+    <script src="./js/lib/qrcmodal.umd.min.js"></script>
+    <script src="./js/lib/core.umd.min.js"></script>
+    <script src="./js/lib/base.umd.min.js"></script>
+    <script src="./js/ethersRPC.js"></script> -->
+</head>
+
+<body>
+    <div id="cover"></div>
+<div class="progress_new">
+    <div class="progressBG bg">
+    </div>
+    <div class="progressNumber numberFont">
+      <span>0%</span>
+    </div>
+  </div>
+<div class="load"
+     style="width: 100%; height: 100%; z-index: 9; position:fixed; top: 0; left: 0; background: #000;display: none;">
+    <div class="loadWrap">
+        <!-- <img src="./img/load.gif" style="width: 4.6rem; height: 4.6rem;" alt=""> -->
+        <!-- <div class="btn_videoplay bg"></div> -->
+        <!-- <video id="loadVideo" width="90%" height="90%" src="./video/demo.mp4">
+        </video> -->
+        <!-- <div class="progress">
+            <div class="title bg"></div>
+            <div class="wrap">
+
+            </div>
+            <div class="progressNumber">
+                <span>0%</span>
+            </div>
+        </div> -->
+    </div>
+</div>
+<div class="boxWarp passwordBox" style="z-index: 9999;">
+    <img src="" height="100%" width="100%" alt="">
+    <div class="popup">
+      <div class="title"></div>
+      <div>
+        <div class="tips">Enter Password</div>
+        <input type="password" autocomplete="off" id="password" placeholder="">
+      </div>
+      <div class="btnWrap">
+        <!-- <button class="enterCancel">Cancel</button> -->
+        <button class="enterSave">OK</button>
+      </div>
+    </div>
+  </div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+
+        <div class="header">
+            <div class="modal-close">&times;</div>
+            <img class="bytecity-image" src="./img/icon/Web3auth_Logo.png"/>
+        </div>
+        <div class="small-header">Select one of the following to continue</div>
+
+        <div class="modal-body">
+            <div class="connect-label">External Wallet</div>
+            <div class="logos">
+                <div class="wallet-container">
+                    <input type="image" class="metamask-image wallet-image" src="./img/icon/Web3auth_Metamask.png"/>
+                    <p class="connection-name">Metamask</p>
+                </div>
+<!--                <div class="wallet-container">-->
+<!--                    <input type="image" class="torus-image wallet-image" src="./img/icon/Web3auth_Torus.png"/>-->
+<!--                    <p class="connection-name">Torus</p>-->
+<!--                </div>-->
+                <div class="wallet-container">
+                    <input type="image" class="walletconnect-image wallet-image" src="./img/icon/Web3auth_WalletConnect.png"/>
+                    <p class="connection-name">WalletConnect</p>
+                </div>
+            </div>
+
+            <div class="email-box">
+                <div class="connect-label">Email</div>
+                <input class="in-email" placeholder="12345@email.com">
+<!--                <div class="email-button-box">-->
+                    <button class="connect-email">Continue with Email</button>
+<!--                </div>-->
+            </div>
+
+            <div class="bottom-header">
+                <div class="connect-label">Social Login</div>
+                <div class="social-login">
+                        <img class="google-image" src="./img/icon/Web3auth_Google.png"/>
+                        <div class="social-login-text">
+                            Login/Create and Account with Google
+                        </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+<div id="metamaskModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+
+        <div class="header">
+            <div class="error-close">&times;</div>
+            <img class="bytecity-image" src="./img/icon/Web3auth_Logo.png"/>
+        </div>
+
+        <div class="modal-body">
+            <div class="metamask-error">
+            Looks like something went wrong when trying to log in with MetaMask. If you have not installed MetaMask please click below
+        <a class="download-button" href="https://metamask.io/download/" target="_blank">Download MetaMask</a>
+        </div>
+       </div>
+    </div>
+
+</div>
+
+<div class="boxWarp register">
+    <div class="popup">
+        <!-- <div class="title">TIPS</div> -->
+        <div class="contentText">
+            You have successfully registered
+        </div>
+        <!-- <div class="btnWrap">
+            <button class="enterOkey">OK</button>
+        </div> -->
+    </div>
+</div>
+<div class="joinNotice">
+    <div class="party">
+        <!-- <div class="banner">        
+        </div> -->
+        <div class="blama">
+            Shannon Lee AMA      
+        </div>
+        <div class="opendate">
+            Open at&nbsp;
+            <span id="openHour"></span>:00 on July&nbsp;
+            <span id="openDay"></span>th    
+        </div>
+        <div class="AMAcountDown"><div class="firstBack"><span id="AMAcountDown"></span></div></div>
+    </div>
+    <div class="btnWrap">
+        <div class="btn">CONFIRM</div>
+    </div>
+</div>
+<div class="content">
+    <canvas class="unity-canvas" id="unity-canvas-web"></canvas>
+</div>
+<div class="loadAfter">
+
+    <!-- <div class="head">
+        <div class="logoWrap">
+            <div class="logo bg"></div>
+            <div class="icon_and bg"></div>
+            <div class="partnerLogo bg"></div>
+        </div>
+        <div class="join">
+            <div class="link">
+                <div class="item">
+                    <a class="discord" target="_blank" href="http://discord.gg/bytecity"></a>
+                </div>
+                <div class="item">
+                    <a class="twitter" target="_blank" href="https://twitter.com/PlayByteCity"></a>
+                </div>
+            </div>
+            <div class="logWrap">
+                <div class="logout">
+                    <span class="icon_logout bg"></span>
+                    <span class="text">LOGOUT</span>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="contentCount">
+        <!-- <div>
+            OFFICIAL <span class="countDown">BRUCE LEE</span>
+        </div>
+        <div>
+            50TH ANNIVERSARY EVENT
+        </div> -->
+        <div class="countDown">
+            <!-- <img src="./img/OfficialEventText.png"/> -->
+            <div id="activityText"></div>
+        </div>
+    </div>
+    <div class="walletWrap bg">
+        <div class="media">
+            <div class="addr">
+                <div class="email"></div>
+                <div class="walletAddr"></div>
+            </div>
+            <div class="icon_copy bg"></div>
+        </div>
+        <div class="wallet">
+            <div class="addr">
+                <div class="wlText">Wallet Login</div>
+                <div class="walletAddr"></div>
+            </div>
+            <div class="icon_copy bg"></div>
+        </div>
+    </div>
+    <!-- <a class="ploarTips" target="_blank" href="https://polar.byte.city/#algomafia"></a> -->
+    <div class="foot">
+        <!-- <div class="email">
+            <div class="btn_email bg"></div>
+            <div>Please enter your email to get the latest news of BYTE CITY</div>
+        </div>
+        <div class="subWrap">
+            <div class="item sub active">
+                <div class="bg btn_subscribe"></div>
+            </div>
+            <div class="item subed">
+                <div class="bg btn_subscribed"></div>
+            </div>
+            <div class="item gameStart">
+                <div class="bg btn_gameStart"></div>
+            </div>
+        </div> -->
+        <div class="footBtns">
+            <!-- <a class="bg playNow" target="_blank" href="https://play.byte.city/"></a> -->
+            <div class="email_error"></div>
+            <div class="tips">
+                YOU’LL RECEIVE AN EMAIL CONFIRMATION SHORTLY
+            </div>
+            <div class="d-fl">
+                <!-- <a class="bg Galaxy" target="_blank" href="https://galaxystore.samsung.com/detail/io.superpower.samsung.bytecity"></a>
+                <a class="bg Google" target="_blank" href="https://play.google.com/store/apps/details?id=io.bytecity.googleplay.bc"></a> -->
+                <input class="email_input" maxlength="100" type="text" id="email_input" placeholder="EMAIL ADDRESS" autocomplete="off" spellcheck="false"/> <button class="email_button"  id="mailSignUp">FREE TICKET</button>
+                <span class="email_reserved">RESERVATION CONFIRMED</span>
+            </div>
+            
+        </div>
+        <div class="joinContent">
+            <button class="join_btn">JOIN AMA</button>
+        </div>
+        
+    </div>
+
+</div>
+
+<script>
+  //  document.addEventListener('click', playVideo);
+  //  const video = document.querySelector('#loadVideo');
+    // video.muted = true;
+    // video.play();
+    // video.muted = false;
+  var buildUrl = "Build";
+  const _url = 'https://hghzgjtrkrcq6drx.byte.city/';
+  var loaderUrl = buildUrl + "/{{{ LOADER_FILENAME }}}";
+  var config_unity = {
+            dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
+            frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
+            codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+            #if MEMORY_FILENAME
+                memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
+            #endif
+            #if SYMBOLS_FILENAME
+                symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
+            #endif
+                streamingAssetsUrl: "StreamingAssets",
+            companyName: "{{{ COMPANY_NAME }}}",
+            productName: "{{{ PRODUCT_NAME }}}",
+            productVersion: "{{{ PRODUCT_VERSION }}}",
+    };
+
+  function getLoadingStr(index) {
+    var loadstr = '';
+    for (var i = 1; i <= index; i++) {
+      if (i == 1) {
+        loadstr += '<div class="item first"><div class="itembg bg"></div></div>'
+      } else if (i == 8) {
+        loadstr += '<div class="item last"><div class="itembg bg"></div></div>'
+      } else {
+        loadstr += '<div class="item"><div class="itembg bg"></div></div>'
+      }
+    }
+    return loadstr
+  }
+
+  function loadByteCityUnity() {
+    const script = document.createElement("script");
+    script.src = loaderUrl;
+    script.onload = () => {
+      createUnityInstance(document.querySelector("#unity-canvas-web"), config_unity, progress => {
+        // $('.load .loadWrap .progressNumber span').html(Math.round(progress * 100) + '%');
+        $('.progress_new .progressNumber span').html(Math.round(progress * 100) + '%');
+        var index = Math.ceil(Math.round(progress * 100) / 12.5);
+        if (index == 0) return false
+        var str = getLoadingStr(index)
+        $('.load .wrap').html(str)
+
+      }).then(unityInstance => {
+
+        $('.load').hide()
+        $('.progress_new').hide();
+        gameInstance = unityInstance;
+        var curWidth = document.documentElement.clientWidth
+        if(curWidth < 560){
+            console.log("竖屏")
+            gameInstance.SendMessage("Loader", "StartLoadScene", 1);
+        } else {
+            console.log("横屏")
+            gameInstance.SendMessage("Loader", "StartLoadScene", 0);
+        }
+      });
+    }
+
+    document.body.appendChild(script);
+  }
+  
+//   function playVideo() {
+//     const video = document.querySelector('#loadVideo');
+//     $('.load .btn_videoplay').hide();
+//     video.play();
+//     document.removeEventListener('click', playVideo)
+//   }
+
+  function loadUnity(){
+    $('.load').show();
+    $('.progress_new').css('display','flex');
+    $('.passwordBox').hide()
+    loadByteCityUnity()
+  }
+   loadUnity()
+//   if(pass_md5){
+//         addCheckHandler()
+//     }
+</script>
+<script src="./js/index.js"></script>
+<script>
+    if(isMobile()){
+        $('.joinContent').hide();
+    }
+    // countDown();
+    AMAcountDown();
+    function countDown() {
+      function addZero(i) {
+        return i < 10 ? "0" + i : i;
+      }
+      let activityText = document.querySelector('#activityText');
+      let timer = null;
+      const startTime = new Date('2023-7-20 08:00:00'.replace(/-/g, "/"));
+      const endTime = new Date('2023-7-25 23:59:59'.replace(/-/g, "/"));
+      // 注：这里是直接使用用户本地系统时间做演示
+      const nowTime = Date.now();
+      // 当前时间距离活动开始时间的差值
+      const beginDiff = parseInt((startTime.getTime() - nowTime) / 1000);
+      //当前时间距离活动结束时间的差值
+      const endDiff = parseInt((endTime.getTime() - nowTime) / 1000);
+      // 剩余时间
+      const leftTime = beginDiff > 0 ? beginDiff : endDiff;
+      let day = parseInt(leftTime / (24 * 60 * 60))
+      let hour = parseInt(leftTime / (60 * 60) % 24);
+      let minute = parseInt(leftTime / 60 % 60);
+      let second = parseInt(leftTime % 60);
+    //   day = addZero(day);
+    //   hour = addZero(hour);
+    //   minute = addZero(minute);
+    //   second = addZero(second);
+
+      if (beginDiff > 0) {
+        activityText.innerText = `${day}D ${hour}H ${minute}M ${second}S`;
+        timer = setTimeout(countDown, 1000);
+      } else if (leftTime <= 0) {
+        activityText.innerText = "";
+        clearTimeout(timer);
+      } else {
+        activityText.innerText = "";
+        timer = setTimeout(countDown, 1000);
+      }
+    }
+</script>
+</body>
+
+</html>
